@@ -30,28 +30,76 @@ class LinkedList:
 
     #TODO 1: Insert at the beginning of the list
     def insertBeg(self, new_data):
-        pass
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
     
     #TODO 2: Insert at the end
     def insertEnd(self, new_data):
-        pass
+        new_node = Node(new_data)
+        if self.head is None:
+            self.head = new_node
+            return
+        current_node = self.head
+        while current_node.next is not None:
+            current_node = current_node.next
+        current_node.next = new_node
 
     #TODO 3: Insert after a specific node
     def insertAfter(self, data, new_data):
-        pass
+        new_node = Node(new_data)
+        current_node = self.head
+        while current_node is not None:
+            if current_node.data == data:
+                new_node.next = current_node.next
+                current_node.next = new_node
+                return
+            current_node = current_node.next
 
     #TODO 4: Deleting a node at a specific index
     def deleteIndex(self, index):
-        pass
+        if index == 0:
+            if self.head is not None:
+                self.head = self.head.next
+            return
+        current_node = self.head
+        for i in range(index - 1):
+            if current_node is None:
+                return
+            current_node = current_node.next
+        if current_node is None:
+            return
+        if current_node.next is not None:
+            current_node.next = current_node.next.next
 
     #TODO 5: Search an element
     def find(self, key):
+        current_node = self.head
+        index = 0
+        while current_node is not None:
+            if current_node.data == key:
+                return index
+            current_node = current_node.next
+            index += 1
         return -1
+
 
     #TODO 6: Sort the linked list
     def sort(self, head):
-        pass
-
+        end = None
+        while end != self.head.next:
+            current = head
+            while current.next != end:
+                if current.data > current.next.data:
+                    current.data, current.next.data = current.next.data, current.data
+                current = current.next
+            end = current
+        
+    
     #TODO 7: Print the linked list
     def printList(self):
-        pass
+        current_node = self.head
+        while current_node is not None:
+            print(current_node.data, end=" ")
+            current_node = current_node.next
+        print()

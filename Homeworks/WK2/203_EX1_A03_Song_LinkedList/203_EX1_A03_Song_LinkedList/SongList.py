@@ -26,10 +26,21 @@ class SongNode:
 class SongList:
     def __init__(self):  
         self.head = None
+        
     # TODO 1: Traverse through the list and print every song titles
     def printSongs(self): 
-        print("Nothing is printed")
+        current_node = self.head
+        while current_node is not None:
+            print(current_node.song_title)
+            current_node = current_node.next
 
     # TODO 2: Insert a new song title to the end of the list
     def AddNewSong(self, new_song_title):
-        pass
+        new_song_node = SongNode(new_song_title)
+        if self.head is None:
+            self.head = new_song_node
+        else:
+            current_node = self.head
+            while current_node.next is not None:
+                current_node = current_node.next
+            current_node.next = new_song_node
