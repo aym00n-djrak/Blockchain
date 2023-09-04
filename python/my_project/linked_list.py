@@ -1,49 +1,50 @@
-from typing import Any
-
-
 class Node:
-    def __init__(self,dataval=None):
+    def __init__(self, dataval=None):
         self.dataval = dataval
         self.nextval = None
 
 class LinkedList:
     def __init__(self):
         self.headval = None
+        self.tailval = None
 
     def printlist(self):
         printval = self.headval
-        while (printval != None):
+        while printval is not None:
             print(printval.dataval)
             printval = printval.nextval
 
-    def insertAtBeginning(self,newdata):
+    def insertAtBeginning(self, newdata):
         NewNode = Node(newdata)
-        NewNode.nextval = self.headval # type: ignore
+        NewNode.nextval = self.headval
         self.headval = NewNode
+        if self.tailval is None:
+            self.tailval = NewNode
 
-    def insertAtEnd(self,newdata):
+    def insertAtEnd(self, newdata):
         NewNode = Node(newdata)
         if self.headval is None:
             self.headval = NewNode
+            self.tailval = NewNode
             return
-        last = self.headval
-        while(last.nextval):
-            last = last.nextval
-        last.nextval = NewNode # type: ignore
+        self.tailval.nextval = NewNode
+        self.tailval = NewNode
 
     def length(self):
         count = 0
         current = self.headval
-        while(current):
+        while current is not None:
             count += 1
             current = current.nextval
         return count
-    
+
     def remove(self, key):
         current = self.headval
         if current is not None:
             if current.dataval == key:
                 self.headval = current.nextval
+                if current == self.tailval:
+                    self.tailval = None
                 current = None
                 return
         while current is not None:
@@ -51,44 +52,27 @@ class LinkedList:
                 break
             prev = current
             current = current.nextval
-        if current == None:
+        if current is None:
             return
         prev.nextval = current.nextval
+        if current == self.tailval:
+            self.tailval = prev
         current = None
 
-    def insertBetween(self,middle_node,newdata):
+    def insertBetween(self, middle_node, newdata):
         if middle_node is None:
             print("The mentioned node is absent")
             return
         NewNode = Node(newdata)
-        NewNode.nextval = middle_node.nextval # type: ignore
-        middle_node.nextval = NewNode # type: ignore
+        NewNode.nextval = middle_node.nextval
+        middle_node.nextval = NewNode
 
-list1 = LinkedList()
-
-list1.headval = Node("Mon") # type: ignore
-
-e2 = Node("Tue")
-e3 = Node("Wed")
-
-
-list1.headval.nextval = e2 # type: ignore
-
-e2.nextval = e3 # type: ignore
-
-list1.insertAtBeginning("Sun")
-list1.insertAtEnd("Thu")
-
-
-list1.printlist()
-print(list1.length())
-
-print("Removing Tue")
-list1.remove("Tue")
-list1.printlist()
-
-print("Inserting between Mon and Wed")
-
-list1.insertBetween(list1.headval.nextval,"Tue")
-
-list1.printlist()
+    def bubblesort(self):
+        end = None
+        while end != self.headval.nextval:
+            current = self.headval
+            while current.nextval != end:
+                if current.dataval > current.nextval.dataval:
+                    current.dataval, current.nextval.dataval = current.nextval.dataval, current.dataval
+                current = current.nextval
+            end = current
