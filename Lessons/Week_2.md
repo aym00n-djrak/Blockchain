@@ -33,3 +33,13 @@
 - Singly linked list : Each node has only one link to the next node
 - Doubly linked list : Each node has two links, one to the previous node and one to the next node
 - Circular linked list : The last node of the list points to the first node (or the head) of the list
+
+
+
+QUIZ :
+
+1-D
+2-A
+3-B
+4-A
+5-A
