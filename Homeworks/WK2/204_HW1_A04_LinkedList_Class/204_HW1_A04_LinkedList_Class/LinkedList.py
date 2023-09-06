@@ -41,12 +41,11 @@ class LinkedList:
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
-            # I guess it's a bit inconsistent that sometimes you return and sometimes else
-            return
-        current_node = self.head
-        while current_node.next is not None:
-            current_node = current_node.next
-        current_node.next = new_node
+        else:  
+            current_node = self.head
+            while current_node.next is not None:
+                current_node = current_node.next
+            current_node.next = new_node
 
     # TODO 3: Insert after a specific node
     def insertAfter(self, data, new_data):
@@ -75,7 +74,7 @@ class LinkedList:
         if current_node is None:
             return
         if current_node.next is not None:
-            # actually you used next.next here :D, you were wondering yesterday if it works
+            # actually you used next.next here :D, Yes ! I try it :)
             current_node.next = current_node.next.next
 
     # TODO 5: Search an element
