@@ -19,34 +19,39 @@ Notes:
     https://realpython.com/linked-lists-python/
 """
 
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    #TODO 1: Insert at the beginning of the list
+    # TODO 1: Insert at the beginning of the list
     def insertBeg(self, new_data):
         new_node = Node(new_data)
         new_node.next = self.head
         self.head = new_node
-    
-    #TODO 2: Insert at the end
+
+    # TODO 2: Insert at the end
     def insertEnd(self, new_data):
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
+            # I guess it's a bit inconsistent that sometimes you return and sometimes else
             return
         current_node = self.head
         while current_node.next is not None:
             current_node = current_node.next
         current_node.next = new_node
 
-    #TODO 3: Insert after a specific node
+    # TODO 3: Insert after a specific node
     def insertAfter(self, data, new_data):
+        # if not self.find(data) + 1:
+        #   return None
         new_node = Node(new_data)
         current_node = self.head
         while current_node is not None:
@@ -56,7 +61,7 @@ class LinkedList:
                 return
             current_node = current_node.next
 
-    #TODO 4: Deleting a node at a specific index
+    # TODO 4: Deleting a node at a specific index
     def deleteIndex(self, index):
         if index == 0:
             if self.head is not None:
@@ -70,9 +75,10 @@ class LinkedList:
         if current_node is None:
             return
         if current_node.next is not None:
+            # actually you used next.next here :D, you were wondering yesterday if it works
             current_node.next = current_node.next.next
 
-    #TODO 5: Search an element
+    # TODO 5: Search an element
     def find(self, key):
         current_node = self.head
         index = 0
@@ -83,23 +89,25 @@ class LinkedList:
             index += 1
         return -1
 
-
-    #TODO 6: Sort the linked list
+    # TODO 6: Sort the linked list
     def sort(self, head):
         end = None
         while end != self.head.next:
             current = head
             while current.next != end:
                 if current.data > current.next.data:
+                    # woo fancy, pretty python code, nice!!
                     current.data, current.next.data = current.next.data, current.data
                 current = current.next
             end = current
-        
-    
-    #TODO 7: Print the linked list
+
+    # TODO 7: Print the linked list
     def printList(self):
         current_node = self.head
         while current_node is not None:
             print(current_node.data, end=" ")
             current_node = current_node.next
         print()
+
+
+# Ok so my wonderings in comments, look at them please

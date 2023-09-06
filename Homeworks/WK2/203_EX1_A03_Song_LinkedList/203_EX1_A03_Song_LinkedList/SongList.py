@@ -18,18 +18,25 @@ Notes:
     * visit this url for more information on linked list:
     https://realpython.com/linked-lists-python/
 """
+
+
 class SongNode:
-    def __init__(self, song_title=None, next = None):
+    def __init__(self, song_title=None, next=None):
         self.song_title = song_title
         self.next = next
 
+
 class SongList:
-    def __init__(self):  
+    def __init__(self):
         self.head = None
-        
+
     # TODO 1: Traverse through the list and print every song titles
-    def printSongs(self): 
+    def printSongs(self):
+        # It would be nice to check if there is head
+        # if not self.head:
+        #     print("Song List is empty")
         current_node = self.head
+        # i think "while current' would be enough
         while current_node is not None:
             print(current_node.song_title)
             current_node = current_node.next
@@ -41,6 +48,7 @@ class SongList:
             self.head = new_song_node
         else:
             current_node = self.head
+            # again i think  while current_node.next: would be enough here
             while current_node.next is not None:
                 current_node = current_node.next
             current_node.next = new_song_node
