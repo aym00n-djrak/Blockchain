@@ -32,11 +32,9 @@ class SongList:
 
     # TODO 1: Traverse through the list and print every song titles
     def printSongs(self):
-        # It would be nice to check if there is head
         if not self.head:
              print("Song List is empty")
         current_node = self.head
-        # i think "while current' would be enough
         while current_node is not None:
             print(current_node.song_title)
             current_node = current_node.next
@@ -48,7 +46,6 @@ class SongList:
             self.head = new_song_node
         else:
             current_node = self.head
-            # again i think  while current_node.next: would be enough here
             while current_node.next :
                 current_node = current_node.next
             current_node.next = new_song_node
