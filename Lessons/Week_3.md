@@ -66,3 +66,10 @@ public key : encrypt or verify the signatures  (know and accessible to everyone)
 private key : decryt and create signatures. (are extemely privagte to indivuals)
 
 the public key should be kept in a public repository accessible to everyone and the private key should have to access this one.
+
+
+RSA algoritgm (Ron Rivest, Adi Shamir, and Leonard adleman) is possibly one of the most widely used public-key cryptographic algorithms for encrypting and signing messages
+
+
+Confidentiality : Encryption/ Decryption 
+Authentification (digital signature) : authenticity/Non-repudiation/Integrity
