@@ -3,6 +3,7 @@
 This test case will verify if the provided solution by a student for Asym.py is correct.
 """
 from Asym import *
+import os 
 
 if __name__ == '__main__':
    

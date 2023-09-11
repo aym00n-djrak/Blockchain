@@ -62,9 +62,50 @@ def decrypt(ciphertext, key):
 # TODO 1: Store the list of keys into a given file.
 # Make sure of proper PEM encoding before serialization
 def save_keys(keys_file_name, keys_list):
-    pass
+
+    storage_keys= []
+
+    for key in keys_list :
+        name_key, private_key, public_key = key
+
+        private_serialized_key = private_key.private_bytes(
+            encoding= serialization.Encoding.PEM,
+            format= serialization.PrivateFormat.TraditionalOpenSSL,
+            encryption_algorithm=serialization.NoEncryption()
+        )
+
+        public_serialized_key= public_key.public_bytes(
+            encoding= serialization.Encoding.PEM,
+            format=serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+
+        storage_keys.append((name_key, private_serialized_key, public_serialized_key))
+
+    with open(keys_file_name, "wb") as savefile :
+        pickle.dump(storage_keys, savefile)
+        #savefile.close()
+
+
 
 # TODO2: Load all private and public keys from a given file and return those keys as a list
 # Make sure of proper PEM decoding when deserializing
 def load_keys(keys_file_name):
-    return None
+    serialized_keys = None
+    storage_keys= []
+    with open(keys_file_name, "rb") as loadfile :
+        serialized_keys = pickle.load(loadfile)
+    
+    for key in serialized_keys :
+        name_key, private_serialized_key, public_serialized_key = key
+        private_key = serialization.load_pem_private_key(
+            private_serialized_key,
+            password=None,
+            )
+        public_key = serialization.load_pem_public_key(
+            public_serialized_key,
+        )
+        storage_keys.append((name_key, private_key, public_key))
+    return storage_keys
+
+
+

@@ -30,18 +30,43 @@ from cryptography.hazmat.primitives.asymmetric import padding
 # Use recommended algorithm values where possible
 # Suggested key size 2048
 def generate_keys():
-    private = 'private'
-    public = 'public'
+    private = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+    )
+    public = private.public_key()
     return private, public
 
 # TODO 2: Encrypt a passed message using the provided key
 # Suggested algorithm is SHA256() 
 def encrypt(message, key):
-    return None
-
+    try: 
+        ciphertext = key.encrypt(
+            message,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+            algorithm=hashes.SHA256(),
+            label=None
+            )
+        )
+        return ciphertext
+    except:
+        return False
+    
 # TODO 3: Decrypt a passed message using the provided key
 # Make sure using the same recommended algorithm values for encryption and decryption
 # Suggested algorithm is SHA256(). 
 def decrypt(ciphertext, key):
-    return None
+    try:
+        message = key.decrypt(
+            ciphertext,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+            algorithm=hashes.SHA256(),
+            label=None
+            )
+        )
+        return message
+    except:
+        return False
 

@@ -92,5 +92,13 @@ def load_keys(keys_file_name):
 
 # TODO 1: Load message from a given file and return it
 # Make sure of passing proper arguments to open a file in read mode
+
+#path= os.path.dirname(os.path.realpath(__file__))
+
+
 def load_message(file_name):
-    return None
+    #loadfile = open(f"{path}\{file_name}", "r")
+    loadfile = open(file_name, "rb")
+    message = loadfile.read()
+    loadfile.close()
+    return message  
