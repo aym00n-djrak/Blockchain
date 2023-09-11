@@ -8,9 +8,9 @@
 ### Lesson 2 Blockchain and Cryptocurrency / Blockcain data structure
 
 - Data Structure, is a data organization, integration, management, and storage format that enables efficient Progress ( access and modification ) of data. Binary to more abstract data types.
-- Linked List, is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. 
+- Linked List, is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next.
 
-- Nodes : 
+- Nodes :
   - Data
   - Link
 - Head : First Node
@@ -28,13 +28,10 @@
   - Searching : Search an element in the linked list using a given key
   - Sort : Arrange elements Ascending or Descending order according to a given key
 
-
 - Type of linked list :
 - Singly linked list : Each node has only one link to the next node
 - Doubly linked list : Each node has two links, one to the previous node and one to the next node
 - Circular linked list : The last node of the list points to the first node (or the head) of the list
-
-
 
 QUIZ :
 

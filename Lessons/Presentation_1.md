@@ -51,7 +51,7 @@ supply chain transparency
 
 ## Logistics and trust
 
-Data silo's 
+Data silo's
 Varying definitions
 XDS
 community
@@ -61,7 +61,6 @@ transparency
 validation
 
 MEDILEDGER  EMBLEEMA
-
 
 ## TIPS
 

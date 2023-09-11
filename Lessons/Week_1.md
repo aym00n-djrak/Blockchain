@@ -3,7 +3,7 @@
 - One of the first know digital disruption that laid the foundation of the Internet was TCP/IP (in the 1970s)
 
 - Before TCP/IP, it was the era of circuit switching,which required dedicated connection between two parties for communication to happen. (before telepone)
-
+  
 ### Build atop the open and decentralized TCP/IP
 
 - 1970: INTERNET
@@ -82,14 +82,14 @@ If Alice pays to Bob $10, why would it go through a bank?
 
  All the nodes in the network will verify the transaction and if it is valid, it will be added to the blockchain.
 
- ### Technical Overview (WHAT)
+### Technical Overview (WHAT)
 
- - Blockchain is a peer-to-peer system of transacting values.
- - it is a shared, decentralized , and open ledger of transactions. This ledger database is replicated across a large number of nodes.
- - This ledger database is an append-only database and cannot be changed or altered. It means that every entry is a permanent entry.
- - Any new entry on it gets reflected on all copies of the databases hosted on different nodes.
- - There is no need for trusted third parties to serve as intermediaries to verify, secure, and settle the transactions.
- - It is another layer on top of the Internet and can coexist with other Internet technologies.
+- Blockchain is a peer-to-peer system of transacting values.
+- it is a shared, decentralized , and open ledger of transactions. This ledger database is replicated across a large number of nodes.
+- This ledger database is an append-only database and cannot be changed or altered. It means that every entry is a permanent entry.
+- Any new entry on it gets reflected on all copies of the databases hosted on different nodes.
+- There is no need for trusted third parties to serve as intermediaries to verify, secure, and settle the transactions.
+- It is another layer on top of the Internet and can coexist with other Internet technologies.
 
 ### The blockchain data structure
 
@@ -180,7 +180,6 @@ Almost no system is purely decentralized (or purely centralized).
 
 Example: Email [Decentralized protocol, but dominated by centralized service providers]
 
-
 ### IDEALLY : Decentralized and P2P BLOCKCHAIN
 
 Unlike common distributed systems, the task is not subdivided and delegated to nodes.
@@ -189,20 +188,17 @@ There is no master node who would do that in blockchain.
 
 The contributing nodes do not work on a portion of the work.
 
-
-The objective of Blockchain was to enable decentralization : 
+The objective of Blockchain was to enable decentralization :
 
 - Technical architecture : decentralized
 - Political Perspective : decentralized
 - Logical Perspective : centralized
 
-
-### Peer to peer network :
+### Peer to peer network
 
 open to anyone, low barrier to entery
 
-
-### Mining: 
+### Mining
 
  It is also open to anyone, and should be technically decentralized, but because it requires a very high capital cost, there is an inevitable concentration of power.
 
@@ -210,10 +206,10 @@ open to anyone, low barrier to entery
 
  Core developers trusted by community, have great power.
 
- ### Advantages
+### Advantages
 
- - Elimiation of intermediaries
- - Easier and genuine verification of transactions
- - Increased security with lower cost
- - Greater transparency
- - Decentralized and immutable
+- Elimiation of intermediaries
+- Easier and genuine verification of transactions
+- Increased security with lower cost
+- Greater transparency
+- Decentralized and immutable
