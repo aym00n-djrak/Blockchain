@@ -15,7 +15,7 @@ llist.insertEnd(4) # Linked List: 3 2 1 4
 
 llist.insertAfter(2, 4)     # This call will insert 4 after the first occurrence 2 (if there are more than one 2)
                             # Linked List: 3 2 4 1 4
-llist.insertAfter(4, 5)     # This call will insert 6 after the first occurrence 4 (if there are more than one 2)
+llist.insertAfter(2, 5)     # This call will insert 6 after the first occurrence 4 (if there are more than one 2)
                             # Linked List: 3 2 4 6 1 4
 
 llist.printList()

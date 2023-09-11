@@ -1,4 +1,4 @@
-### Blockchain 28/08/23
+# Blockchain 28/08/23
 
 - One of the first know digital disruption that laid the foundation of the Internet was TCP/IP (in the 1970s)
 
