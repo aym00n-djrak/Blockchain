@@ -8,9 +8,9 @@ t4 = "Mike sends 1 BTC to John"
 
 
 def create_chain():
-    chain = Block.generate_genesis_block()
+    blockchain = [Block.generate_genesis_block()]
     print("Genesis Block : \n")
-    print(chain)
+    print(blockchain[-1])
     print("How many blocks do you want to add?")
     n = int(input())
     for i in range(n):
@@ -21,14 +21,19 @@ def create_chain():
             print("Enter transaction")
             t = input()
             list.append(t)
-        chain = chain.generate_next_block(chain.get_hash(), list)
+        new_block = blockchain[-1].generate_next_block(blockchain[-1].get_hash(), list)
+        blockchain.append(new_block)
         print("Block " + str(i+1) + " : \n")
-        print(chain)
-    print("Blockchain \n", chain)
-    return chain
+        print(blockchain[-1])
+
+    return blockchain
 
 
 blockchain= create_chain()
 
 
+for i in range(len(blockchain)):
+    print("Block " + str(i) + " : \n")
+    print(blockchain[i])
+    print("\n")
 
