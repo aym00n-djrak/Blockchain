@@ -100,14 +100,8 @@ def load_keys(keys_file_name, pw):
 
     prv_ser, pbc_ser = keys_ser
 
-    private_key = serialization.load_pem_private_key(
-        prv_ser,
-        password=password
-    )
-
-    public_key = serialization.load_pem_public_key(
-        pbc_ser
-    )
+    private_key = serialization.load_pem_private_key(prv_ser,password=password)
+    public_key = serialization.load_pem_public_key(pbc_ser)
 
     return private_key, public_key
 
