@@ -84,9 +84,9 @@ def save_keys(keys_file_name, keys, pw):
             format=serialization.PublicFormat.SubjectPublicKeyInfo
             )
     
-    savefile = open(keys_file_name, "wb")
-    pickle.dump((prv_ser, pbc_ser), savefile)
-    savefile.close()
+    with open(keys_file_name, "wb") as f:
+        pickle.dump((prv_ser, pbc_ser), f)
+
 
 
 # TODO 4: Load asymmetric keys from a given file and return those keys as a tuple
@@ -94,14 +94,11 @@ def save_keys(keys_file_name, keys, pw):
 # Make sure of proper PEM decoding when deserializing
 def load_keys(keys_file_name, pw):
     password = pw.encode('utf-8')
-    loadfile = open(keys_file_name, "rb")
-    keys_ser = pickle.load(loadfile)
-    loadfile.close()
-
-    prv_ser, pbc_ser = keys_ser
-
-    private_key = serialization.load_pem_private_key(prv_ser,password=password)
-    public_key = serialization.load_pem_public_key(pbc_ser)
+    with open(keys_file_name, "rb") as f:
+        keys_ser = pickle.load(f)
+        prv_ser, pbc_ser = keys_ser
+        private_key = serialization.load_pem_private_key(prv_ser,password=password)
+        public_key = serialization.load_pem_public_key(pbc_ser)
 
     return private_key, public_key
 

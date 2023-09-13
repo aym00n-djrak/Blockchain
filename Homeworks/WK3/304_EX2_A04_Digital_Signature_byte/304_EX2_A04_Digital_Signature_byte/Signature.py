@@ -65,5 +65,3 @@ def verify(message, sig, public):
         return True
     except InvalidSignature:
         return False
-    except:
-        return False
