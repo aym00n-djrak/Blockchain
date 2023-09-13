@@ -18,6 +18,9 @@ Notes:
     * visit this url for more information on this topic:
     https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
 """
+
+#1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
+
 from cryptography.exceptions import *
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import hashes

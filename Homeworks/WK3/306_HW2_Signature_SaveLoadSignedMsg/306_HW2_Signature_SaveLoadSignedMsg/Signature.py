@@ -21,6 +21,10 @@ Notes:
     https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
 """
 
+
+#1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
+
+
 from cryptography.exceptions import *
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import hashes
@@ -93,12 +97,18 @@ def save_keys(keys_file_name, keys, pw):
 # In this implementation passwords are used for additional security
 # Make sure of proper PEM decoding when deserializing
 def load_keys(keys_file_name, pw):
-    password = pw.encode('utf-8')
+    password = pw.encode("utf-8")
     with open(keys_file_name, "rb") as f:
-        keys_ser = pickle.load(f)
-        prv_ser, pbc_ser = keys_ser
-        private_key = serialization.load_pem_private_key(prv_ser,password=password)
-        public_key = serialization.load_pem_public_key(pbc_ser)
+        try:
+            keys_ser = pickle.load(f)
+            prv_ser, pbc_ser = keys_ser
+            private_key = serialization.load_pem_private_key(prv_ser, password=password)
+            public_key = serialization.load_pem_public_key(pbc_ser)
+            return private_key, public_key
 
-    return private_key, public_key
+        except ValueError:
+            print("Bad decrypt. Incorrect password.")
+            return (False, False)
+        except:
+            print("Something went wrong")
 

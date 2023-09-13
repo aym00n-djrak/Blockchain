@@ -41,7 +41,7 @@ if __name__ == '__main__':
         for p in ['alex', 'mike', 'rose']:
             r_message = input(f"What was {p}'s message? ")
             
-            (_, pbc_loaded) = load_keys(p+'.keys', pwl)
+            (_, pbc_loaded) = load_keys(p+'.keys', pw1l)
             sig = globals()[p+'_signature']
             correct = verify(r_message, sig, pbc_loaded)
             if correct:
