@@ -41,17 +41,23 @@ class CBlock:
     # TODO 2: Compute the cryptographic hash of the current block. 
     # Be sure which values must be considered to compute the hash properly.
     # return the digest value
-    def computeHash(self):    
-        digest = hashes.Hash(hashes.SHA256(), backend=default_backend())        
-        if isinstance(self.data, str):
+    def computeHash(self):
+        digest = hashes.Hash(hashes.SHA256(), backend=default_backend())
+
+        if type(self.data) == str:
             digest.update(self.data.encode('utf-8'))
-        elif isinstance(self.data, bytes):
+        elif type(self.data) == bytes:
             digest.update(self.data)
+
         if self.previousHash:
-            digest.update(self.previousHash.encode('utf-8'))
+            if type(self.previousHash) == str:
+                digest.update(self.previousHash.encode('utf-8'))
+            elif type(self.previousHash) == bytes:
+                digest.update(self.previousHash)
+
         digest.update(str(self.nonce).encode('utf-8'))
 
-        return digest.finalize().hex() 
+        return digest.finalize().hex()
        
     # TODO 3: Mine the current value of a block
     # Calculates a digest based on required values from the block, such as:
