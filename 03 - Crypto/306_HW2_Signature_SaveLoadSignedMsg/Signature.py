@@ -21,10 +21,11 @@ Notes:
     https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
 """
 
-from cryptography.exceptions import InvalidSignature
+from cryptography.exceptions import *
 from cryptography.hazmat.primitives.asymmetric import rsa
-from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import serialization
 import pickle
 
 
@@ -38,7 +39,7 @@ def generate_keys():
 # Make sure the message is encoded correctly before signing
 # Signing and verifying algorithms must be the same
 def sign(message, private_key):
-    message = message.encode("utf-8")  # Encode the message to bytes
+    message = message.encode("utf-8")
     signature = private_key.sign(
         message,
         padding.PSS(
@@ -53,7 +54,7 @@ def sign(message, private_key):
 # Make sure the message is decoded correctly before verifying
 # Signing and verifying algorithms values must be the same
 def verify(message, signature, public_key):
-    message = message.encode("utf-8")  # Encode the message to bytes
+    message = message.encode("utf-8")
     try:
         public_key.verify(
             signature,
@@ -63,9 +64,9 @@ def verify(message, signature, public_key):
             ),
             hashes.SHA256(),
         )
-        return True  # Verification successful
+        return True
     except InvalidSignature:
-        return False  # Verification failed
+        return False
 
 
 # TODO 3: Store the list of keys into a given file.
@@ -73,30 +74,37 @@ def verify(message, signature, public_key):
 # Make sure of proper PEM encoding before serialization
 def save_keys(keys_file_name, keys, pw):
     private_key, public_key = keys
-    # Serialize private and public keys to PEM format
+    password = pw.encode("utf-8")
+
     prv_ser = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.TraditionalOpenSSL,
-        encryption_algorithm=serialization.BestAvailableEncryption(pw.encode("utf-8")),
+        encryption_algorithm=serialization.BestAvailableEncryption(password),
     )
     pbc_ser = public_key.public_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PublicFormat.SubjectPublicKeyInfo,
     )
-    keys_tuple = (prv_ser, pbc_ser)
 
-    with open(keys_file_name, "wb") as savefile:
-        pickle.dump(keys_tuple, savefile)
+    with open(keys_file_name, "wb") as f:
+        pickle.dump((prv_ser, pbc_ser), f)
 
 
 # TODO 4: Load asymmetric keys from a given file and return those keys as a tuple
 # In this implementation passwords are used for additional security
 # Make sure of proper PEM decoding when deserializing
 def load_keys(keys_file_name, pw):
-    with open(keys_file_name, "rb") as loadfile:
-        prv_ser, pbc_ser = pickle.load(loadfile)
-        private_key = serialization.load_pem_private_key(
-            prv_ser, password=pw.encode("utf-8")
-        )
-        public_key = serialization.load_pem_public_key(pbc_ser)
-        return private_key, public_key
+    password = pw.encode("utf-8")
+    with open(keys_file_name, "rb") as f:
+        try:
+            keys_ser = pickle.load(f)
+            prv_ser, pbc_ser = keys_ser
+            private_key = serialization.load_pem_private_key(prv_ser, password=password)
+            public_key = serialization.load_pem_public_key(pbc_ser)
+            return private_key, public_key
+
+        except ValueError:
+            print("Bad decrypt. Incorrect password.")
+            return False, False
+        except:
+            print("Something went wrong")
