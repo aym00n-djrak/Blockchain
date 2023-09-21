@@ -41,7 +41,7 @@ class CBlock:
     # TODO 2: Compute the hash of a the current block
     # Make sure you include all required data
     def computeHash(self):
-        digest = hashes.Hash(hashes.SHA256(), backend=default_backend())
+        digest = hashes.Hash(hashes.SHA256())
         if type(self.data) != bytes:
             data_string = str(self.data).encode('utf-8')
         else:
