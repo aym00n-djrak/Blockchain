@@ -42,7 +42,7 @@ class CBlock:
     # Be sure which values must be considered to compute the hash properly.
     # return the digest value
     def computeHash(self):
-        digest = hashes.Hash(hashes.SHA256(), backend=default_backend())
+        digest = hashes.Hash(hashes.SHA256())
 
         if type(self.data) == str:
             digest.update(self.data.encode('utf-8'))
