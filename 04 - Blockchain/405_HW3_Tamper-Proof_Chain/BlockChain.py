@@ -31,13 +31,13 @@ class CBlock:
     # Make sure you distinguish between the genesis block and other blocks
     def __init__(self, data, previousBlock):
         self.data = data
+        self.blockHash = None
         self.previousBlock = previousBlock
         self.nonce = 0
         if previousBlock:
             self.previousHash = previousBlock.computeHash()
         else:
             self.previousHash = None
-        self.blockHash = None
 
     # TODO 2: Compute the cryptographic hash of the current block.
     # Be sure which values must be considered to compute the hash properly. // data, previousHash, nounce
@@ -56,6 +56,11 @@ class CBlock:
     # Make sure to compute the hash value of the current block and store it properly // done
     def mine(self, leading_zeros):
         target_prefix = "0" * leading_zeros
+        if self.previousBlock:
+            self.previousHash = self.previousBlock.blockHash
+        else:
+            self.previousHash = None
+        self.blockHash = self.computeHash()
         while True:
             self.nonce += 1
             self.blockHash = self.computeHash()
@@ -69,6 +74,7 @@ class CBlock:
     # The stored digest of the previous block
     # return the result of all comparisons as a boolean value // done
     def is_valid_hash(self):
-        if self.previousBlock == None:
-            return self.previousHash == None
+        if self.previousBlock:
+            self.previousHash = self.previousBlock.computeHash()
+
         return self.blockHash == self.computeHash()
