@@ -1,0 +1,9 @@
+SUCCESS! Valid transaction is verified.
+SUCCESS! Valid transaction is verified.
+SUCCESS! Valid transaction is verified.
+SUCCESS! Invalid transaction is not verified.
+SUCCESS! Invalid transaction is not verified.
+SUCCESS! Invalid transaction is not verified.
+SUCCESS! Invalid transaction is not verified.
+SUCCESS! Invalid transaction is not verified.
+SUCCESS! Invalid transaction is not verified.

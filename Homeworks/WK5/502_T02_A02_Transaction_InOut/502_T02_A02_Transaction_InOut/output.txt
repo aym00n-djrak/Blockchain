@@ -1,0 +1,21 @@
+---------------
+-- Tx1
+In[1]:  alex sends 0.9 coin
+Out[1]: mike receives 0.8 coin
+
+---------------
+-- Tx2
+In[1]:  alex sends 2.1 coin
+Out[1]: mike receives 0.9 coin
+Out[2]: rose receives 1.0 coin
+
+---------------
+-- Tx2
+In[1]:  alex sends 2.1 coin
+In[2]:  mara sends 0.7 coin
+In[3]:  mara sends 1.1 coin
+In[4]:  mara sends 1.5 coin
+Out[1]: mike receives 0.9 coin
+Out[2]: rose receives 1.0 coin
+Out[3]: mike receives 1.9 coin
+Out[4]: rose receives 0.2 coin
