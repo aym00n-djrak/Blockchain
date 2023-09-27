@@ -70,6 +70,7 @@ if __name__ == "__main__":
     Tx1.add_output(mike_pbc, 1)
     Tx1.sign(alex_prv)
 
+    print(Tx1.sigs)
     # --------------------------------------
     Tx2 = Tx()
     Tx2.add_input(alex_pbc, 2)
