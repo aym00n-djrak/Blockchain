@@ -22,6 +22,8 @@ Notes:
     * visit this url for more information on this topic:
     https://cryptography.io/en/latest/hazmat/primitives/cryptographic-hashes/
 """
+# 1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 
@@ -65,6 +67,7 @@ class CBlock:
             self.nonce += 1
             self.blockHash = self.computeHash()
             if self.blockHash.hex()[:leading_zeros] == target_prefix:
+                print(self.blockHash.hex()[:6], self.nonce)
                 break
 
     # TODO 4: Check if the current block contains valid hash digest values
