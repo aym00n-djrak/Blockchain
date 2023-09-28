@@ -95,15 +95,6 @@ class Tx:
         for i, (addr, amount) in enumerate(self.inputs):
             if not verify(data, self.sigs[i], addr):
                 return False
-        
-        # Vérification pour s'assurer que toutes les entrées et les sorties sont positives.
-        for addr, amount in self.inputs:
-            if amount < 0:
-                return False
-                
-        for addr, amount in self.outputs:
-            if amount < 0:
-                return False
 
         # Vérifier les signatures requises.
         if self.reqd:
