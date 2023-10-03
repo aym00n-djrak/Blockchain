@@ -1,4 +1,0 @@
-Success: Correct signature is verified
-Success: Wrong signature is not verified
-Sucsess: Original message is verified
-Sucsess: Tampered message is detected

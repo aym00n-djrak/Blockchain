@@ -1,1 +1,0 @@
-<!-- Bienvenue à toi Hubert, si tu es ici c’est que tu es au courant qu’un Easter-Egg est caché dans le site et que tu souhaites obtenir un entretien chez Takima ! Voici la page secrète, c’est cadeau ! <a _ngcontent-takima-u-c60="" href="/secret" class="d-none"></a>-->

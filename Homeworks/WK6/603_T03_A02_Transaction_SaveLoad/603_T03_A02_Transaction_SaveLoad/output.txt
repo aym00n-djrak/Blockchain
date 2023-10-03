@@ -1,2 +1,0 @@
-Success! Tx is valid
-Sucess! Loaded tx is valid

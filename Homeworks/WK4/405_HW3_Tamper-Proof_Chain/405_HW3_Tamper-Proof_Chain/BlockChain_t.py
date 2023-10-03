@@ -4,7 +4,7 @@ This test case will verify if the provided homework solution by a student for Bl
 """
 from BlockChain import *
 
-leading_zero = 4
+leading_zero = 3
 
 dataG = 'Root'
 data1 = 'It is B1'

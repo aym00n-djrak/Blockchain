@@ -1,8 +1,0 @@
-Success! Valid block is verified.
-Success! Valid block is verified.
-Success! Valid block is verified.
-Success! Valid block is verified.
-Success! Valid block is verified.
-Success! Invalid blocks is detected.
-Success! Invalid blocks is detected.
-Success! Invalid blocks is detected.
