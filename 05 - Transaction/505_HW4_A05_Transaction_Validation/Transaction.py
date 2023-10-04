@@ -18,6 +18,8 @@ To test run 'Transactions_t.py' in your command line
 Notes:
     * do not change class structure or method signature to not break unit tests
 """
+# 1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
+
 from Signature import verify, sign as sign_data
 
 
@@ -65,27 +67,16 @@ class Tx:
     #   2 -  If an extra required signature is needed, the signature need to be verified too, and
     #   3 -  The total amount of outputs must not exceed the total amount of inputs.
     def is_valid(self):
+        data = self.__collect_data()
+
         # Check if every entry in inputs is signed by the relevant sender
         for from_addr, amount in self.inputs:
-            signed = False
-            data = self.__collect_data()
-
-            for signature in self.sigs:
-                if verify(data, signature, from_addr):
-                    signed = True
-                    break
-            if not signed:
+            if not any(verify(data, sig, from_addr) for sig in self.sigs):
                 return False
 
         # If extra required signatures are needed, verify them
         for addr in self.reqd:
-            verified = False
-            data = self.__collect_data()
-            for signature in self.sigs:
-                if verify(data, signature, addr):
-                    verified = True
-                    break
-            if not verified:
+            if not any(verify(data, sig, addr) for sig in self.sigs):
                 return False
 
         # Calculate the total input and output amounts
@@ -93,8 +84,13 @@ class Tx:
         total_output = sum(amount for _, amount in self.outputs)
         # print(total_input, total_output)
 
-        # Ensure that the total output amount does not exceed the total input amounta and both values are positive
-        if total_output > total_input or total_output <= 0 or total_input <= 0:
+        # Check if total output amount does not exceed the total input amounta and both values are positive
+        if total_output > total_input:
+            return False
+
+        if any(amount <= 0 for _, amount in self.inputs) or any(
+            amount <= 0 for _, amount in self.outputs
+        ):
             return False
 
         return True

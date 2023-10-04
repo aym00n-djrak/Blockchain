@@ -18,6 +18,7 @@ To test run 'Transactions_t.py' in your command line
 Notes:
     * do not change class structure or method signature to not break unit tests
 """
+# 1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
 
 from Signature import sign as sign_data
 
@@ -51,5 +52,4 @@ class Tx:
 
     def __collect_data(self):
         data_to_sign = [self.inputs, self.outputs, self.reqd]
-        print(data_to_sign)
         return data_to_sign
