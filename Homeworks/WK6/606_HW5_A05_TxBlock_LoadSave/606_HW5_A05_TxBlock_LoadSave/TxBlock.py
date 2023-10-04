@@ -30,7 +30,7 @@ class TxBlock (CBlock):
     # TODO 1: Initialize the block
     # Each block contains a list for the data and a hash value to previous block
     def __init__(self, previousBlock):
-        super(TxBlock,self).__init__([], previousBlock)
+        super().__init__([], previousBlock)
     
     # TODO 2: Append the transaction to the data list
     def addTx(self, Tx_in):
