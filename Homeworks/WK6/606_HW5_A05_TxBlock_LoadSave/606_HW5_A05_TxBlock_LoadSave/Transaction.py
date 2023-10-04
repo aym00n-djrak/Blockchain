@@ -89,22 +89,21 @@ class Tx:
 
     def __repr__(self):
         reprstr = "Tx\n"
-        
         # Displaying inputs
         reprstr += " INPUTS:\n"
         for addr, amount in self.inputs:
-            reprstr += str(amount) + " from " + str(addr.decode('utf-8')) + '\n'
+            reprstr += str(amount) + " from " + str(addr) + '\n'
         
         # Displaying outputs
         reprstr += "OUTPUTS:\n"
         for addr, amount in self.outputs:
-            reprstr += str(amount) + " to " + str(addr.decode('utf-8')) + '\n'
+            reprstr += str(amount) + " to " + str(addr) + '\n'
 
         # Displaying extra required signatures
         if self.reqd:
             reprstr += "EXTRA REQUIRED SIGNATURES:\n"
             for addr in self.reqd:
-                reprstr += str(addr.decode('utf-8')) + '\n'
+                reprstr += str(addr) + '\n'
         
         # Displaying signatures
         reprstr += "SIGNATURES:\n"
