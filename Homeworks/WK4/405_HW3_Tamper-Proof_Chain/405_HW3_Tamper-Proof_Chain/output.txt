@@ -1,0 +1,43 @@
+--- Blocks are created --- Hashes and Nonces should not match!
+Fail! B1 hash does not match
+Fail! B2 hash does not match
+Fail! B3 hash does not match
+Fail! B4 hash does not match
+
+Mining Gn ...
+11724
+Mining B1 ...
+21751
+Mining B2 ...
+83579
+Mining B3 ...
+209059
+Mining B4 ...
+67743
+--- Blocks are mined --- Hashes and Nonces must match!
+Success! B1 hash matches
+Success! B2 hash matches
+Success! B3 hash matches
+Success! B4 hash matches
+
+--- Block3 is tampered --- Hashes and Nonces of blocks after B3 should not match!
+Success! B1 hash matches
+Success! B2 hash matches
+Fail! B3 hash does not match
+Fail! B4 hash does not match
+
+Mining Gn ...
+11724
+Mining B1 ...
+21751
+Mining B2 ...
+83579
+Mining B3 ...
+143719
+Mining B4 ...
+67743
+--- Blocks are mined again --- Hashes and Nonces must match again!
+Success! B1 hash matches
+Success! B2 hash matches
+Success! B3 hash matches
+Success! B4 hash matches

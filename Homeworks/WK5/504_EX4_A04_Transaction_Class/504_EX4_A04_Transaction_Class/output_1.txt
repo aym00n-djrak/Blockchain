@@ -1,0 +1,19 @@
+---------------
+-- Tx1
+In[1]:  alex sends 1 coin
+Out[1]: mike receives 1 coin
+Tx1 is signed by alex
+
+---------------
+-- Tx2
+In[1]:  alex sends 2 coin
+Out[1]: mike receives 1 coin
+Out[2]: rose receives 1 coin
+Tx2 is signed by alex
+
+---------------
+-- Tx3
+In[1]:  rose sends 1.2 coin
+Out[1]: alex receives 1.1 coin
+Tx3 is signed by rose
+Tx3 is signed by mara
