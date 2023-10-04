@@ -90,6 +90,4 @@ class Tx:
     # for the desired format, check the 'output.txt' file.
 
     def __repr__(self):
-        return "inputs: {}\noutputs: {}\nsigs: {}\nreqd: {}".format(
-            self.inputs, self.outputs, self.sigs, self.reqd
-        )
+        return f"inputs: {self.inputs}\noutputs: {self.outputs}\nsigs: { self.sigs}\nreqd: {self.reqs}"
