@@ -21,6 +21,9 @@ Notes:
     * do not change class structure or method signature to not break unit tests
     * Check previous tutorials for more information on this topic
 """
+
+##1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
+
 from BlockChain import CBlock
 from Signature import generate_keys, sign, verify
 from Transaction import Tx

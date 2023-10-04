@@ -15,6 +15,7 @@ Notes:
     * do not change class structure or method signature to not break unit tests
     * Check previous tutorials for more information on this topic
 """
+##1085367 Rémy JOVANOVIC 1085377 Olgierd KRZYŻANIAK
 
 from Signature import *
 
@@ -88,27 +89,27 @@ class Tx:
     # for the desired format, check the 'output.txt' file.
 
     def __repr__(self):
-        reprstr = "Tx\n"
+        reprstr = ""
         # Displaying inputs
         reprstr += " INPUTS:\n"
         for addr, amount in self.inputs:
-            reprstr += str(amount) + " from " + str(addr) + '\n'
+            reprstr += f"{amount} from {addr}  \n"
         
         # Displaying outputs
         reprstr += "OUTPUTS:\n"
         for addr, amount in self.outputs:
-            reprstr += str(amount) + " to " + str(addr) + '\n'
+            reprstr += f"{amount} from {addr}  \n"
 
         # Displaying extra required signatures
         if self.reqd:
             reprstr += "EXTRA REQUIRED SIGNATURES:\n"
             for addr in self.reqd:
-                reprstr += str(addr) + '\n'
+                reprstr += f"{addr}  \n"
         
         # Displaying signatures
         reprstr += "SIGNATURES:\n"
         for s in self.sigs:
-            reprstr += str(s) + '\n'
+            reprstr += f"{s}  \n"
         
-        reprstr += "END"
+        reprstr += "END \n"
         return reprstr
