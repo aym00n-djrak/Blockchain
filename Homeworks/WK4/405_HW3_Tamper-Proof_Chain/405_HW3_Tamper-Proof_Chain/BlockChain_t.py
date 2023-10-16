@@ -3,7 +3,6 @@
 This test case will verify if the provided homework solution by a student for Blockchain.py is correct.
 """
 from BlockChain import *
-
 leading_zero = 4
 
 dataG = 'Root'
